@@ -1,7 +1,7 @@
 {
-  "name": "11ty-blog-site",
+  "name": "emiliawil.dev",
   "version": "1.0.0",
-  "description": "These are the starting files used by [Kevin Powell](https://kevinpowell.co) to create a personal blog site for the [Codementor](https://www.codementor.io/) DevProjects Challenge, [Create a fast and secure blog using JAMStack](#). You are free to use them however you want to get started with the challenge, if you'd like to start working on creating the site without worrying about the content itself.",
+  "description": "Portfolio and tech blog website of full stack developer Emilia Williamson.",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
@@ -9,19 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevin-powell/11ty-blog-site.git"
+    "url": "git+https://github.com/emiliawil/emiliawil.dev.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kevin-powell/11ty-blog-site/issues"
+    "url": "https://github.com/emiliawil/emiliawil.dev/issues"
   },
-  "homepage": "https://github.com/kevin-powell/11ty-blog-site#readme",
+  "homepage": "https://github.com/emiliawil/emiliawil.dev#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.0-alpha1"
   }
 }
