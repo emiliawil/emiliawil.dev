@@ -1,0 +1,27 @@
+---
+layout: 'base.njk'
+---
+
+<section class="post-header">
+  <a class="breadcrumb" href="/blog/">&larr; Back to blog</a>
+     <h1 class="article-title">
+      {{ title }}
+    </h1>
+  <p>Published on {{date | postDate}}.</p>
+  <p>Reading time: {{readTime}} minutes.</p>
+</section>
+<div class="container flow post">
+<article class="main-article container--narrow">
+  
+ 
+    <figure class="main-article__figure">
+      <img src="{{ image }}" alt="{{ imageAlt }}">
+      <figcaption>
+        {{ imageAlt }}
+      </figcaption>
+    </figure>
+    
+    {{ content | safe}}
+
+</article>
+</div>

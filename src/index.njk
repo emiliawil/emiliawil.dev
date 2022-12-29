@@ -1,0 +1,42 @@
+---
+title: Homepage
+layout: 'base.njk'
+---
+      
+<section class="hero">
+  <div class="container flow">
+      <div>
+        <img src="/assets/hero-img.png" alt="cartoon-style illustration of woman using laptop" class="hero__image">
+      </div>
+      <div class="hero__content flow">
+        <h1 class="section-title">I'm Emilia Williamson, a Midlands-based full stack developer.</h1>
+        <p>
+          I recently graduated from <a href="https://schoolofcode.co.uk" target="_blank">School of Code</a>, an intensive 16-week web development bootcamp, emerging on the other side a fully-fledged PERN stack dev and unapologetic JavaScript fangirl.
+        </p>
+        <p>
+          Since you're here, feel free to check out some of my work or <a href="/contact/">strike up a chat</a>. 
+        </p>
+        <div class="hero__buttons">
+          <a href="/portfolio/" class="td-none btn btn--primary">View portfolio</a>
+          <a href="/assets/ew_cv_v1.pdf" class="td-none btn btn--neutral" download>Download CV</a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="featured-articles" class="featured-articles">
+  <div class="container flow">
+    <h2 class="section-title text-center ">Featured articles</h2>
+    <p class="text-center">Here is a sample of articles which I feel give you a good idea of what this site is all about.</p>
+    <ul role="list" class="articles__list flow">
+
+      {%- for post in collections.featured | reverse -%}
+        {% include 'article-snippet.njk' %}
+      {%- endfor %} 
+    
+    </ul>
+  </div>
+</section> 
+
+
+
