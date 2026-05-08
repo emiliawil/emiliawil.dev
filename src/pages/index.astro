@@ -1,11 +1,82 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<div class="container">
+			<h1>Emilia Williamson</h1>
+			<h2>Full Stack Developer</h2>
+			<ul>
+				<li><a href="https://www.linkedin.com/in/emiliawil">LinkedIn</a></li>
+				<li><a href="https://github.com/emiliawil">GitHub</a></li>
+				<li><a href="https://bsky.app/profile/emiliawil.dev">Bluesky</a></li>
+				<li><a href="mailto:emiliawilliamson@pm.me">Email</a></li>
+				<li><a href="/cv.pdf" download>CV ⤓</a></li>
+			</ul>
+		</div>
+	</main>
 </Layout>
+
+<style>
+	main {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-family: 'Inter', system-ui, sans-serif;
+		color: #1a1a1a;
+		background: #fafaf7;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	.container {
+		max-width: 32rem;
+		margin-left: 20vw;
+	}
+
+	h1 {
+		font-family: 'Fraunces', Georgia, serif;
+		font-weight: 600;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		font-variation-settings: 'opsz' 144;
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		margin: 0 0 0.25rem;
+	}
+
+	h2 {
+		font-family: 'Fraunces', Georgia, serif;
+		font-weight: 400;
+		font-size: 1.25rem;
+		font-variation-settings: 'opsz' 24;
+		color: #6b6b66;
+		margin: 0 0 2rem;
+		letter-spacing: -0.005em;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	li {
+		margin: 0.4rem 0;
+	}
+
+	a {
+		color: #1a1a1a;
+		text-decoration: none;
+		border-bottom: 1px solid #d4d4cf;
+		padding-bottom: 1px;
+		transition: border-color 120ms ease, color 120ms ease;
+	}
+
+	a:hover {
+		color: #8a5a3b;
+		border-bottom-color: #8a5a3b;
+	}
+</style>
