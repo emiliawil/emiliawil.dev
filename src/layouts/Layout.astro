@@ -1,3 +1,12 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	title?: string;
+}
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -12,10 +21,22 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap"
 		/>
-		<title>Emilia Williamson</title>
+		<title>
+			{Astro.props.title
+				? `${Astro.props.title} | Emilia Williamson`
+				: 'Emilia Williamson - Full Stack Developer'}
+		</title>
 	</head>
 	<body>
-		<slot />
+		{Astro.props.title === "Home" ? (
+			<slot />
+		) : (
+			<>
+				<Header />
+				<slot />
+				<Footer />
+			</>
+		)}
 	</body>
 </html>
 

@@ -1,0 +1,61 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+type Item =
+  | { type: "blog"; entry: CollectionEntry<"blog"> }
+  | { type: "tutorials"; entry: CollectionEntry<"tutorials"> }
+  | { type: "reviews"; entry: CollectionEntry<"reviews"> };
+
+const [blog, tutorials, reviews] = await Promise.all([
+  getCollection("blog"),
+  getCollection("tutorials"),
+  getCollection("reviews"),
+]);
+
+const items: Item[] = [
+  ...blog.map((entry) => ({ type: "blog" as const, entry })),
+  ...tutorials.map((entry) => ({ type: "tutorials" as const, entry })),
+  ...reviews.map((entry) => ({ type: "reviews" as const, entry })),
+].sort(
+  (a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf()
+);
+
+const typeLabel = {
+  blog: "Blog",
+  tutorials: "Tutorial",
+  reviews: "Book",
+};
+---
+
+<Layout title="Writing">
+  <main>
+    <h1>Writing</h1>
+    <p>Essays, tutorials, and book reviews.</p>
+
+    <ul class="feed">
+      {items.map(({ type, entry }) => (
+        <li>
+          <a href={`/${type}/${entry.id}`}>
+            <span class="type">{typeLabel[type]}</span>
+            <span class="title">{entry.data.title}</span>
+            <time datetime={entry.data.date.toISOString()}>
+              {entry.data.date.toLocaleDateString("en-GB", {
+                year: "numeric", month: "short", day: "numeric",
+              })}
+            </time>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .feed { list-style: none; padding: 0; }
+  .feed li { margin-block: 0.75rem; }
+  .feed a { display: grid; grid-template-columns: 6rem 1fr auto; gap: 1rem; align-items: baseline; text-decoration: none; }
+  .type { font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; }
+  .title { font-weight: 600; }
+  time { font-size: 0.85rem; opacity: 0.7; }
+</style>

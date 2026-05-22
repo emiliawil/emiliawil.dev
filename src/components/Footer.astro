@@ -1,0 +1,12 @@
+---
+import { SOCIAL_LINKS } from "../data/constants";
+---
+
+<footer>
+    <p>&copy; {new Date().getFullYear()} Emilia Williamson. All rights reserved.</p>
+    <ul>
+        {SOCIAL_LINKS.map((link) => (
+            <li><a href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a></li>
+        ))}
+    </ul>
+</footer>

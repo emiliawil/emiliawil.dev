@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("reviews");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={entry.data.title}>
+  <article>
+    <header>
+      <h1>{entry.data.title}</h1>
+      {entry.data.tags && (
+        <p>Tags:</p>
+        <ul class="tags">
+          {entry.data.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )}
+      <time datetime={entry.data.date.toISOString()}>
+        {entry.data.date.toLocaleDateString("en-GB", {
+          year: "numeric", month: "long", day: "numeric",
+        })}
+      </time>
+      {entry.data.description && <p class="lede">{entry.data.description}</p>}
+    </header>
+
+    <Content />
+  </article>
+</Layout>
