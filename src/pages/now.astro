@@ -9,7 +9,7 @@ import Layout from "../layouts/Layout.astro";
     <p>
         Welcome to my now page, where you can see what I'm currently up to, both personally and professionally.
     </p>
-    <p>
+    <p class="last-updated">
         Last updated: May 2026
     </p>
     <h2>
@@ -20,15 +20,6 @@ import Layout from "../layouts/Layout.astro";
     </p>
     <p>
         In sad news, my time at The Economist came to an end in May 2026 during a round of layoffs. I'm very happy to be keeping in touch with a lot of my former colleagues though, and forcing them to look at pictures of my vegetable trug. My time is currently filled with a lot of gardening, reading, and learning new things in preparation for my next role.
-    </p>
-    <h2>
-        Work update
-    </h2>
-    <p>
-        As of May 2026 my time at The Economist has come to an end, I am actively looking for a new full-time role as a software engineer. 
-    </p>
-    <p>
-        Please get in touch if you're looking for a friendly full stack developer to join your team! Grab a copy of my CV <a href="/cv.pdf" download>here</a>.
     </p>
     <h2>
         Projects
@@ -64,3 +55,11 @@ import Layout from "../layouts/Layout.astro";
             <li><em>Paralives</em>, an indie life sim which was just released in early access.</li>
         </ul>
 </Layout>
+
+<style>
+    .last-updated {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+</style>

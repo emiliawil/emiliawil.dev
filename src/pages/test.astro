@@ -3,8 +3,68 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Test">
-    <main>
+    
         <h1>Emilia Williamson</h1>
-        <p>This is a test page to verify that the layout and styling are working correctly.</p>
-    </main>
+        <span class="job-title">Software Engineer</span>
+        <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" />
+        <p>Welcome! I'm Emilia, a full stack web developer based in the UK.</p>
+        <!-- <p>I think one of the greatest pleasures of the web is having a personal website. A little place on the web that is entirely yours. Making websites has been a huge part of my life since I was a teenager, many years before it became my career.</p> -->
+        <p>This will primarily be a place for me to share my thoughts on tech topics, but I also want to use it as a space to share other things I'm interested in, like literature, philosophy and media criticism.</p>
+        <p><strong>What next?</strong> See what I'm up to <a href="/now">now</a>, or learn a bit more <a href="/about">about me</a>. Soon, there will be some writing on here, too.</p>
+
+        <h2>Current projects</h2>
+        <ul>
+            <li><span class="status in-progress">In progress</span> <a href="https://github.com/emiliawil/emiliawil.dev">emiliawil.dev</a> - This website! Built with Astro and TypeScript.</li>
+            <li><span class="status in-progress">In progress</span> <a href="https://github.com/emiliawil/dnd-wizard" target="_blank">dnd-wizard</a> - An extremely beginner-friendly D&D character builder built with Next.js and TypeScript.</li>
+            <li><span class="status in-progress">In progress</span> <a href="https://github.com/emiliawil/solitaire" target="_blank">solitaire</a> - A simple solitaire game built with Next.js and TypeScript. No help from AI, just a fun coding challenge for myself.</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Please get in touch if you're looking for a friendly full stack developer to join your team! Grab a copy of my CV <a href="/cv.pdf" download>here</a>.</p>
+
 </Layout>
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .job-title {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+    .profile-image {
+        float: right;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 2rem auto;
+    }
+
+    .status {
+        font-family: 'Inter', system-ui, sans-serif;
+        display: inline-block;
+        border-radius: 1rem;
+        padding: 0.15rem 0.4rem;
+        color: #1a1a1a;
+        font-size: 0.6rem;
+        font-weight: bold;
+        margin-right: 0.3rem;
+    }
+    .in-progress {
+        background-color: #fabcb1;
+        border: 1px solid #f08080;
+    }
+</style>

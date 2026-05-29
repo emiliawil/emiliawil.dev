@@ -6,21 +6,72 @@ import Layout from "../layouts/Layout.astro";
     <h1>
         About me
     </h1>
-    <div class="image-container">
-        <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;" />
-    </div>
+    <figure>
+        <img src="/young-pic.jpeg" alt="A profile photo of Emilia Williamson" class="profile-image" />
+        <figcaption>
+            Learning to play Minesweeper on the family computer, circa '99.
+        </figcaption>
+    </figure>
     <div class="bio-container">
         <p>
             I'm Emilia, also known as Milly. I'm a software engineer based in Stoke-on-Trent, UK. 
         </p>
         <p>
-            As a young teen, I was learned to make websites using HTML, CSS, PHP and MySQL, and I was absolutely obsessed with it. I remember making websites with table layouts and anime hero banners edited in Corel Paint Shop Pro, and uploading them via FTP. At the time, I didn't know it was something that could be a viable career (let alone a lucrative one), and I ended up going down a different path. But the love of making things on the web never left me, and I'm so happy to be back doing it now.
+            As a young teen, I was learned to make websites using HTML, CSS, PHP and MySQL, and I was absolutely obsessed with it. I remember making websites with table layouts and anime hero banners edited in Corel Paint Shop Pro, and uploading them via FTP. At the time, I didn't know it was something that could be a viable career (let alone a lucrative one), and I ended up going down a humanities path. But the love of making things on the web never left me, and I'm so happy to be back doing it now!
         </p>
         <p>
             In 2022, I decided to make a career change into software development, after working in advice and guidance roles for over half a decade. I've found that my humanities background (English Degree, Law GDL and customer-facing experience) has been a huge asset in my software engineering career, giving me strong communication skills and a user-centric mindset that I bring to my work every day.
         </p>
         <p>
-            As of today, I'm a mid-level full stack developer with experience in a range of technologies including TypeScript, React/Next.js, Node.js, REST APIs, SQL and some DevOps. 
+            As of today, I'm a mid-level full stack developer with experience in a range of technologies. Get my CV <a href="/cv.pdf" download>here</a>.
         </p>
     </div>
+    <h2>Skills</h2>
+    <ul>
+        <li>TypeScript</li>
+        <li>React/Next.js</li>
+        <li>Node.js</li>
+        <li>REST APIs</li>
+        <li>PostgreSQL</li>
+        <li>AWS (S3, DynamoDB, Amplify, Secrets Manager, ECS)</li>
+        <li>CircleCI</li>
+        <li>New Relic</li>
+        <li>Jest</li>
+        <li>React Testing Library</li>
+        <li>Cypress</li>
+        <li>Playwright</li>
+    </ul>
 </Layout>
+
+<style>
+    
+    figure {
+        float: right;
+        max-width: 200px;
+        margin: 2rem;
+    }
+
+    .profile-image {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    figcaption {
+        font-size: 0.75rem;
+        color: #666;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+
+    .bio-container {
+        max-width: 100ch;
+        margin: 0 auto;
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #1a1a1a;
+    }
+
+    .bio-container p {
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }

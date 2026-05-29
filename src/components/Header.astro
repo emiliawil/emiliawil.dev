@@ -3,9 +3,45 @@ import { NAV_LINKS } from "../data/constants"
 ---
 
 <nav>
-    <ul>
-        {NAV_LINKS.map((link) => (
-            <li><a href={link.href}>{link.name}</a></li>
-        ))}
-    </ul>
+    <div class="container">
+        <a href="/" class="logo">emiliawil.dev</a>
+        <ul>
+            {NAV_LINKS.map((link) => (
+                <li><a href={link.href}>{link.name}</a></li>
+            ))}
+        </ul>
+    </div>
 </nav>
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav {
+        background-color: #f0f0f0;
+        padding: 1rem 0;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 500;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
