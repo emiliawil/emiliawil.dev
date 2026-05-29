@@ -11,6 +11,6 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = [
   { name: "GitHub", href: "https://github.com/emiliawil" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/emiliawil/" },
-  { name: "Bluesky", href: "https://bsky.app/profile/emiliawil.bsky.social" },
+  { name: "Bluesky", href: "https://bsky.app/profile/emiliawil.dev" },
   { name: "Email", href: "mailto:emiliawilliamson@pm.me" },
 ];
