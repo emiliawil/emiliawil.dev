@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import WritingFeed from "../components/WritingFeed.astro";
 
 type Item =
   | { type: "blog"; entry: CollectionEntry<"blog"> }
@@ -29,33 +30,19 @@ const typeLabel = {
 ---
 
 <Layout title="Writing">
-  <main>
-    <h1>Writing</h1>
-    <p>Essays, tutorials, and book reviews.</p>
+  <h1>Writing</h1>
+  <p class="lede">Essays, tutorials, reviews, and whatever else I find interesting.</p>
 
-    <ul class="feed">
-      {items.map(({ type, entry }) => (
-        <li>
-          <a href={`/${type}/${entry.id}`}>
-            <span class="type">{typeLabel[type]}</span>
-            <span class="title">{entry.data.title}</span>
-            <time datetime={entry.data.date.toISOString()}>
-              {entry.data.date.toLocaleDateString("en-GB", {
-                year: "numeric", month: "short", day: "numeric",
-              })}
-            </time>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </main>
+  <WritingFeed items={items} typeLabel={typeLabel} />
 </Layout>
 
 <style>
-  .feed { list-style: none; padding: 0; }
-  .feed li { margin-block: 0.75rem; }
-  .feed a { display: grid; grid-template-columns: 6rem 1fr auto; gap: 1rem; align-items: baseline; text-decoration: none; }
-  .type { font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; }
-  .title { font-weight: 600; }
-  time { font-size: 0.85rem; opacity: 0.7; }
+    .lede {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-variation-settings: 'opsz' 24;
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
 </style>

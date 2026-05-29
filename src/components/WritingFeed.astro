@@ -1,0 +1,70 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type Item =
+  | { type: "blog"; entry: CollectionEntry<"blog"> }
+  | { type: "tutorials"; entry: CollectionEntry<"tutorials"> }
+  | { type: "reviews"; entry: CollectionEntry<"reviews"> };
+
+const [blog, tutorials, reviews] = await Promise.all([
+  getCollection("blog"),
+  getCollection("tutorials"),
+  getCollection("reviews"),
+]);
+
+const items: Item[] = [
+  ...blog.map((entry) => ({ type: "blog" as const, entry })),
+  ...tutorials.map((entry) => ({ type: "tutorials" as const, entry })),
+  ...reviews.map((entry) => ({ type: "reviews" as const, entry })),
+].sort(
+  (a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf()
+);
+
+const typeLabel = {
+  blog: "Blog",
+  tutorials: "Tutorial",
+  reviews: "Review",
+};
+---
+
+<ul class="feed">
+    {items.map(({ type, entry }) => (
+      <li>
+        <span class:list={["type", type]}>{typeLabel[type]}</span>
+        <a href={`/${type}/${entry.id}`}><span class="title">{entry.data.title}</span></a>&ensp;
+          <time datetime={entry.data.date.toISOString()}>
+            {entry.data.date.toLocaleDateString("en-GB", {
+              year: "numeric", month: "short", day: "numeric",
+            })}
+          </time>
+      </li>
+    ))}
+  </ul>
+
+<style>
+    .type {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-right: 0.4rem;
+        border: 1px solid var(--rule);
+        padding: 0.1rem 0.4rem;
+    }
+
+    /* Red or orange */
+    .type.blog {
+        color: #7d2c2c;
+        border-color: #ab7171;
+    }
+
+    .type.tutorials {
+        color: #2c7d74;
+        border-color: #71aba8;
+    }
+
+    .type.reviews {
+        color: #742c7d;
+        border-color: #ab71ba;
+    }
+</style>

@@ -1,82 +1,68 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WritingFeed from '../components/WritingFeed.astro';
 ---
 
 <Layout title="Home">
-	<main>
-		<div class="container">
-			<h1>Emilia Williamson</h1>
-			<h2>Full Stack Developer</h2>
-			<ul>
-				<li><a href="https://www.linkedin.com/in/emiliawil">LinkedIn</a></li>
-				<li><a href="https://github.com/emiliawil">GitHub</a></li>
-				<li><a href="https://bsky.app/profile/emiliawil.dev">Bluesky</a></li>
-				<li><a href="mailto:emiliawilliamson@pm.me">Email</a></li>
-				<li><a href="/cv.pdf" download>CV ⤓</a></li>
-			</ul>
-		</div>
-	</main>
+    <div class="container">
+        <div class="content">
+            <h1>Emilia Williamson</h1>
+            <span class="job-title">Software Engineer</span>
+            <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" />
+            <p>Welcome! I'm Emilia, a full stack web developer based in the UK.</p>
+            <p>This will primarily be a place for me to share my thoughts on tech topics, but I also want to use it as a space to share other things I'm interested in, like literature, philosophy and media criticism.</p>
+            <p><strong>What next?</strong> See my <a href="/work">work</a>, find out what I'm up to <a href="/now">now</a>, or learn a bit more <a href="/about">about me</a>. Soon, there will be some writing on here, too.</p>
+
+            <h2>Recent posts</h2>
+            <WritingFeed limit={3} />
+        </div>
+    </div>
 </Layout>
 
 <style>
-	main {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		font-family: 'Inter', system-ui, sans-serif;
-		color: #1a1a1a;
-		background: #fafaf7;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
+    :global(main) {
+        display: flex;
+        flex-direction: column;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+    }
+    .job-title {
+        display: block;
+        font-family: var(--font-serif);
+        font-size: 1.25rem;
+        font-variation-settings: 'opsz' 24;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+    }
 
-	.container {
-		max-width: 32rem;
-		margin-left: 20vw;
-	}
+    .profile-image {
+        float: right;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: -1.5rem 0 1.5rem 2rem;
+    }
 
-	h1 {
-		font-family: 'Fraunces', Georgia, serif;
-		font-weight: 600;
-		font-size: clamp(2.5rem, 6vw, 4rem);
-		font-variation-settings: 'opsz' 144;
-		line-height: 1.05;
-		letter-spacing: -0.02em;
-		margin: 0 0 0.25rem;
-	}
+    h1 {
+        margin-bottom: 0;
+    }
 
-	h2 {
-		font-family: 'Fraunces', Georgia, serif;
-		font-weight: 400;
-		font-size: 1.25rem;
-		font-variation-settings: 'opsz' 24;
-		color: #6b6b66;
-		margin: 0 0 2rem;
-		letter-spacing: -0.005em;
-	}
+    h2 {
+        clear: right;
+    }
 
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		font-size: 1rem;
-	}
+    @media (max-width: 36rem) {
+        .profile-image {
+            float: none;
+            margin: 1rem auto;
+            max-width: 360px;
+        }
 
-	li {
-		margin: 0.4rem 0;
-	}
+    }
 
-	a {
-		color: #1a1a1a;
-		text-decoration: none;
-		border-bottom: 1px solid #d4d4cf;
-		padding-bottom: 1px;
-		transition: border-color 120ms ease, color 120ms ease;
-	}
-
-	a:hover {
-		color: #8a5a3b;
-		border-bottom-color: #8a5a3b;
-	}
 </style>

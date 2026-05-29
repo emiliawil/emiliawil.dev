@@ -2,8 +2,9 @@ export const SITE_TITLE = "Emilia Williamson";
 
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
-  { name: "Test", href: "/test" },
   { name: "About", href: "/about" },
+  { name: "Work", href: "/work" },
+  { name: "Writing", href: "/writing" },
   { name: "Now", href: "/now" },
 ];
 

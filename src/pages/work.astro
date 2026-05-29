@@ -3,7 +3,294 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Work">
-    <h1>
-        Work page
-    </h1>
+    <h1>Work</h1>
+    <p class="lede">
+        Mid-level full-stack developer with a love of logic puzzles and a proven track record of excellence. 3 years' experience working on production codebases. Driven by curiosity, creativity and compassion.
+    </p>
+
+    <p class="cv-link">
+        <a href="/cv.pdf" download>Download CV ⤓</a>
+    </p>
+
+    <h2>Skills</h2>
+    <dl class="skills">
+        <dt>Languages</dt>
+        <dd>TypeScript, JavaScript, HTML, CSS</dd>
+
+        <dt>Frontend</dt>
+        <dd>React, Next.js, Tailwind CSS, Storybook, a11y</dd>
+
+        <dt>Backend</dt>
+        <dd>Node.js, Express, REST APIs, PostgreSQL</dd>
+
+        <dt>Cloud &amp; DevOps</dt>
+        <dd>AWS (S3, DynamoDB, Amplify, Secrets Manager, ECS), CircleCI, New Relic</dd>
+
+        <dt>Testing</dt>
+        <dd>Jest, React Testing Library, Cypress, Playwright</dd>
+
+        <dt>Tools</dt>
+        <dd>Git, Contentful, Figma, Snyk, Agile/Scrum</dd>
+    </dl>
+
+    <h2>Projects</h2>
+    <ul class="projects">
+        <li>
+            <span class="status in-progress">In progress</span>
+            <a href="https://github.com/emiliawil/emiliawil.dev">emiliawil.dev</a>
+            — this website. Built with Astro and TypeScript.
+        </li>
+        <li>
+            <span class="status in-progress">In progress</span>
+            <a href="https://github.com/emiliawil/dnd-wizard" target="_blank">dnd-wizard</a>
+            — beginner-friendly D&amp;D character builder. Next.js and TypeScript.
+        </li>
+        <li>
+            <span class="status planned">Planned</span>
+            <a href="https://github.com/emiliawil/solitaire" target="_blank">solitaire</a>
+            — simple solitaire game. Next.js and TypeScript. No AI help, just a fun coding challenge.
+        </li>
+    </ul>
+
+    <h2>Experience</h2>
+
+    <article class="role">
+        <header>
+            <h3>Software Engineer</h3>
+            <p class="meta">The Economist <span>· November 2023 – Present</span></p>
+        </header>
+
+        <div class="teams">
+            <section class="team">
+                <h4>Impact Team — B2B custom CMS development</h4>
+                <p class="period">December 2024 – Present</p>
+                <ul>
+                    <li>Leading technical delivery for enterprise client projects, providing CMS expertise, architecture guidance and code review — from fully bespoke applications to hybrid CMS implementations.</li>
+                    <li>Developed a custom responsive data story with d3.js visualisations, receiving very positive client feedback.</li>
+                    <li>Led development of a dynamic Feed component for a Contentful-based CMS, enabling content editors to create intelligent content queries (based on taxonomy, sections, and initiatives) without developer intervention.</li>
+                    <li>Architected and executed complete CMS migration of hundreds of pages, writing custom scripts to export legacy data and rebuild pages in a new content model with zero data loss.</li>
+                    <li>Co-led a multi-scenario disaster recovery exercise — simulating ECS cluster deletion, API key revocation, and AWS Secrets Manager disruption — uncovering a critical New Relic alerting misconfiguration and a CloudFormation stack provisioning failure; resolved both issues and updated runbooks to strengthen production incident response.</li>
+                </ul>
+            </section>
+
+            <section class="team">
+                <h4>Subscriber Engagement Team — B2C web applications</h4>
+                <p class="period">November 2023 – December 2024</p>
+                <ul>
+                    <li>Earned Excellence Award within first three months for exceptional performance and rapid impact on deliverables.</li>
+                    <li>Led font migration across four web applications ahead of a hard company-wide legal deadline; coordinated dev-design collaboration to implement new typography with no issues at launch.</li>
+                    <li>Founded Vulnerability Thursdays, a weekly initiative to eliminate all high-severity dependency vulnerabilities across team applications, triaging findings from Snyk and Nimbus Shield as our team's Security Champion.</li>
+                    <li>Led company-wide mentorship scheme, creating processes that connected ~30 pairs across engineering, design, data, InfoSec, and customer operations teams, resulting in cross-discipline collaboration and new internal projects.</li>
+                    <li>Served as directly responsible individual for the newsletters platform (Next.js, AWS Lambda), independently launching 6+ new newsletters in support of The Economist's evolving subscription pricing strategy.</li>
+                    <li>Facilitated regular sprint ceremonies and presented demos to stakeholders, demonstrating strong communication skills and ability to explain technical decisions to non-technical audiences.</li>
+                </ul>
+            </section>
+        </div>
+    </article>
+
+    <article class="role">
+        <header>
+            <h3>Developer &amp; Software Coach</h3>
+            <p class="meta">School of Code <span>· April 2023 – October 2023</span></p>
+        </header>
+        <ul>
+            <li>Developed internal software tools in an Agile team, automating daily bootcamp operations and improving workflow.</li>
+            <li>Provided 1:1 mentoring to students on coding fundamentals, debugging, and computational thinking approaches.</li>
+            <li>Built relationships in the tech community, facilitating events and connecting students with industry professionals.</li>
+        </ul>
+    </article>
+
+    <article class="role">
+        <header>
+            <h3>Bootcamper</h3>
+            <p class="meta">School of Code <span>· September 2022 – March 2023</span></p>
+        </header>
+        <ul>
+            <li>Built full-stack apps using JavaScript, React, Node.js, Express, and PostgreSQL through an intensive 16-week bootcamp.</li>
+        </ul>
+    </article>
+
+    <article class="role">
+        <header>
+            <h3>Parliamentary Caseworker</h3>
+            <p class="meta">House of Commons <span>· June 2017 – September 2022</span></p>
+        </header>
+    </article>
+
+    <h2>Education</h2>
+    <ul class="education">
+        <li>
+            <strong>Graduate Diploma in Law</strong> — Commendation
+            <span class="meta">University of Law · 2015 – 2016</span>
+        </li>
+        <li>
+            <strong>BA (Hons) English</strong> — First Class (1:1)
+            <span class="meta">Sheffield Hallam University · 2012 – 2015</span>
+        </li>
+    </ul>
 </Layout>
+
+<style>
+    .lede {
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        font-variation-settings: 'opsz' 24;
+        color: var(--muted);
+        max-width: 900px;
+        margin-bottom: 1.5rem;
+    }
+
+    .cv-link {
+        margin-bottom: 2.5rem;
+    }
+
+    .skills {
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        gap: 0.5rem 1.5rem;
+        margin: 0 0 1.25rem;
+        max-width: 900px;
+    }
+
+    .skills dt {
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .skills dd {
+        margin: 0;
+        color: var(--muted);
+    }
+
+    .projects {
+        padding: 0;
+        max-width: 900px;
+        margin-bottom: 1.25rem;
+    }
+
+    .projects li {
+        margin-bottom: 0.6rem;
+        margin-left: 1.25rem;
+        line-height: 1.55;
+    }
+
+    .status {
+        font-family: var(--font-sans);
+        display: inline-block;
+        border-radius: 1rem;
+        padding: 0.15rem 0.5rem;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-right: 0.4rem;
+        vertical-align: 0.1em;
+    }
+
+    .planned {
+        background-color: #ece9df;
+        color: #595549;
+        border-color: #c9c4b3;
+    }
+
+    .in-progress {
+        background-color: #f5e0d6;
+        color: #6d4226;
+        border-color: #e6c7b5;
+    }
+
+    .completed {
+        background-color: #dde7d3;
+        color: #3f5a30;
+        border-color: #b9cdaa;
+    }
+
+    .role {
+        margin-bottom: 2.5rem;
+        max-width: 900px;
+    }
+
+    .role > header {
+        margin-bottom: 0.5rem;
+    }
+
+    .role h3 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .role h4 {
+        font-family: var(--font-serif);
+        font-weight: 500;
+        font-size: 1rem;
+        font-variation-settings: 'opsz' 24;
+        margin: 0 0 0.25rem;
+    }
+
+    .teams {
+        border-left: 2px solid var(--rule);
+        padding-left: 1.25rem;
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .team + .team {
+        margin-top: 1.5rem;
+    }
+
+    .meta {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    .meta span {
+        white-space: nowrap;
+    }
+
+    .period {
+        margin: 0 0 0.5rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+    }
+
+    .role ul {
+        padding-left: 1.1rem;
+        margin: 0.5rem 0 0;
+    }
+
+    .role li {
+        margin-bottom: 0.5rem;
+        line-height: 1.55;
+    }
+
+    .education {
+        list-style: none;
+        padding: 0;
+        max-width: 900px;
+    }
+
+    .education li {
+        margin-bottom: 1rem;
+    }
+
+    .education .meta {
+        display: block;
+        margin-top: 0.15rem;
+    }
+
+    @media (max-width: 36rem) {
+        .skills {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .skills dt {
+            margin-top: 0.75rem;
+        }
+
+        .skills dt:first-of-type {
+            margin-top: 0;
+        }
+    }
+</style>

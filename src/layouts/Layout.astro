@@ -1,10 +1,13 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 interface Props {
 	title?: string;
 }
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,47 +22,33 @@ interface Props {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
 		/>
 		<title>
-			{Astro.props.title
-				? `${Astro.props.title} | Emilia Williamson`
-				: 'Emilia Williamson - Full Stack Developer'}
+			{title ? `${title} | Emilia Williamson` : "Emilia Williamson — Full Stack Developer"}
 		</title>
 	</head>
 	<body>
-		{Astro.props.title === "Home" ? (
-			<slot />
-		) : (
-			<>
-				<Header />
-				<main><slot /></main>
-				<Footer />
-			</>
-		)}
+		<>
+			<Header />
+			<main><slot /></main>
+			<Footer />
+		</>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
 	body {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
-		font-family: 'Fraunces', serif;
-		color: #1a1a1a;
+		min-height: 100dvh;
 	}
 
 	main {
 		flex: 1;
-		max-width: 900px;
+		width: 100%;
+		max-width: var(--container);
 		margin: 0 auto;
-		padding: 2rem1rem;
+		padding: 2rem 1.25rem 4rem;
 	}
 </style>

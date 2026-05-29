@@ -6,11 +6,11 @@ import Layout from "../layouts/Layout.astro";
     <h1>
         Now
     </h1>
+    <p class="lede">
+        Last updated: May 2026
+    </p>
     <p>
         Welcome to my now page, where you can see what I'm currently up to, both personally and professionally.
-    </p>
-    <p class="last-updated">
-        Last updated: May 2026
     </p>
     <h2>
         Headlines
@@ -57,9 +57,13 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-    .last-updated {
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 2rem;
+    .lede {
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        font-variation-settings: 'opsz' 24;
+        color: var(--muted);
+        max-width: 900px;
+        margin-bottom: 1.5rem;
     }
+
 </style>

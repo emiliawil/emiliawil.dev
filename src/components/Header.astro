@@ -1,47 +1,203 @@
 ---
-import { NAV_LINKS } from "../data/constants"
+import { NAV_LINKS } from "../data/constants";
 ---
 
-<nav>
-    <div class="container">
-        <a href="/" class="logo">emiliawil.dev</a>
-        <ul>
-            {NAV_LINKS.map((link) => (
-                <li><a href={link.href}>{link.name}</a></li>
-            ))}
-        </ul>
-    </div>
-</nav>
+<header>
+	<div class="container">
+		<a href="/" class="logo">emiliawil.dev</a>
+
+		<button
+			class="menu-toggle"
+			type="button"
+			aria-expanded="false"
+			aria-controls="primary-nav"
+			aria-label="Toggle menu"
+		>
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</button>
+
+		<nav id="primary-nav" data-open="false">
+			<ul>
+				{NAV_LINKS.map((link) => (
+					<li><a href={link.href}>{link.name}</a></li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+	const nav = document.querySelector<HTMLElement>("#primary-nav");
+
+	if (toggle && nav) {
+		const close = () => {
+			toggle.setAttribute("aria-expanded", "false");
+			nav.dataset.open = "false";
+		};
+
+		const open = () => {
+			toggle.setAttribute("aria-expanded", "true");
+			nav.dataset.open = "true";
+		};
+
+		toggle.addEventListener("click", () => {
+			toggle.getAttribute("aria-expanded") === "true" ? close() : open();
+		});
+
+		nav.querySelectorAll("a").forEach((link) => {
+			link.addEventListener("click", close);
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") close();
+		});
+
+		document.addEventListener("click", (e) => {
+			if (toggle.getAttribute("aria-expanded") !== "true") return;
+			const target = e.target as Node;
+			if (!nav.contains(target) && !toggle.contains(target)) close();
+		});
+	}
+</script>
 
 <style>
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+	header {
+		border-bottom: 1px solid var(--rule);
+		position: relative;
+	}
 
-    nav {
-        background-color: #f0f0f0;
-        padding: 1rem 0;
-    }
+	.container {
+		width: 100%;
+		max-width: var(--container);
+		margin: 0 auto;
+		padding: 1.25rem 1.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+	}
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        padding: 0;
-        margin: 0;
-    }
+	.logo {
+		font-family: var(--font-serif);
+		font-weight: 600;
+		font-size: 1.1rem;
+		font-variation-settings: 'opsz' 24;
+		letter-spacing: -0.01em;
+		border-bottom: none;
+	}
 
-    nav a {
-        text-decoration: none;
-        color: #1a1a1a;
-        font-weight: 500;
-    }
+	.logo:hover {
+		color: var(--accent);
+	}
 
-    nav a:hover {
-        text-decoration: underline;
-    }
+	nav ul {
+		list-style: none;
+		display: flex;
+		gap: 1.5rem;
+		padding: 0;
+		margin: 0;
+	}
+
+	nav li {
+		margin: 0;
+	}
+
+	nav a {
+		font-size: 0.95rem;
+		font-weight: 500;
+		border-bottom: none;
+	}
+
+	nav a:hover {
+		color: var(--accent);
+	}
+
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 4px;
+		width: 2.25rem;
+		height: 2.25rem;
+		padding: 0;
+		background: transparent;
+		border: 1px solid var(--rule);
+		border-radius: 4px;
+		cursor: pointer;
+		transition: border-color var(--transition);
+	}
+
+	.menu-toggle:hover {
+		border-color: var(--accent);
+	}
+
+	.menu-toggle:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+
+	.bar {
+		display: block;
+		width: 1.1rem;
+		height: 1.5px;
+		background: var(--text);
+		margin: 0 auto;
+		transition: transform var(--transition), opacity var(--transition);
+	}
+
+	.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+		transform: translateY(5.5px) rotate(45deg);
+	}
+
+	.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+		transform: translateY(-5.5px) rotate(-45deg);
+	}
+
+	@media (max-width: 36rem) {
+		.menu-toggle {
+			display: flex;
+		}
+
+		nav {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: var(--bg);
+			border-bottom: 1px solid var(--rule);
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height var(--transition);
+		}
+
+		nav[data-open="true"] {
+			max-height: 20rem;
+		}
+
+		nav ul {
+			flex-direction: column;
+			gap: 0;
+			padding: 0.5rem 1.25rem 1rem;
+		}
+
+		nav li {
+			border-bottom: 1px solid var(--rule);
+		}
+
+		nav li:last-child {
+			border-bottom: none;
+		}
+
+		nav a {
+			display: block;
+			padding: 0.75rem 0;
+		}
+	}
+</style>
