@@ -6,11 +6,14 @@ type Item =
   | { type: "tutorials"; entry: CollectionEntry<"tutorials"> }
   | { type: "reviews"; entry: CollectionEntry<"reviews"> };
 
+const showDrafts = import.meta.env.DEV;
+
 const [blog, tutorials, reviews] = await Promise.all([
-  getCollection("blog"),
-  getCollection("tutorials"),
-  getCollection("reviews"),
+  getCollection("blog", ({ data }) => showDrafts || !data.draft),
+  getCollection("tutorials", ({ data }) => showDrafts || !data.draft),
+  getCollection("reviews", ({ data }) => showDrafts || !data.draft),
 ]);
+
 
 const items: Item[] = [
   ...blog.map((entry) => ({ type: "blog" as const, entry })),
@@ -27,7 +30,10 @@ const typeLabel = {
 };
 ---
 
-<ul class="feed">
+{
+items.length > 0 &&
+(
+  <ul class="feed">
     {items.map(({ type, entry }) => (
       <li>
         <span class:list={["type", type]}>{typeLabel[type]}</span>
@@ -40,6 +46,15 @@ const typeLabel = {
       </li>
     ))}
   </ul>
+) 
+}
+
+{
+items.length === 0 &&
+(
+  <p>No writing yet! Please check back soon.</p>
+)
+}
 
 <style>
     .type {
@@ -51,8 +66,6 @@ const typeLabel = {
         border: 1px solid var(--rule);
         padding: 0.1rem 0.4rem;
     }
-
-    /* Red or orange */
     .type.blog {
         color: #7d2c2c;
         border-color: #ab7171;

@@ -9,6 +9,7 @@ const blog = defineCollection({
     date: z.date(),
     description: z.string(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -19,6 +20,7 @@ const projects = defineCollection({
     date: z.date(),
     description: z.string(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -31,6 +33,7 @@ const tutorials = defineCollection({
     difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
     duration: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -44,6 +47,7 @@ const reviews = defineCollection({
     rating: z.number().min(1).max(5),
     isbn: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
   }),
 });
 
