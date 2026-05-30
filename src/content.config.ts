@@ -42,12 +42,18 @@ const reviews = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
-    description: z.string().optional(),
-    author: z.string().optional(),
+    medium: z.enum(["book", "film", "tv", "game", "podcast"]),
+    creator: z.string().optional(), // author / director / showrunner / developer
+    year: z.number().int().optional(), // release/publication year
     rating: z.number().min(1).max(5),
-    isbn: z.string().optional(),
+    description: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+
+    // medium-specific (all optional)
+    isbn: z.string().optional(),
+    imdb: z.string().optional(),
+    publisher: z.string().optional(),
   }),
 });
 

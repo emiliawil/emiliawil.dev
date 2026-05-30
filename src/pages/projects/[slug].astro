@@ -1,40 +1,27 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import PostLayout from "../../layouts/PostLayout.astro";
+import { isPublished } from "../../lib/content";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("projects");
-  return entries.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+    const entries = await getCollection("projects", isPublished);
+    return entries.map((entry) => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={entry.data.title}>
-  <article>
-    <header>
-      <h1>{entry.data.title}</h1>
-      {entry.data.tags && (
-        <p>Tags:</p>
-        <ul class="tags">
-          {entry.data.tags.map((tag) => (
-            <li>{tag}</li>
-          ))}
-        </ul>
-      )}
-      <time datetime={entry.data.date.toISOString()}>
-        {entry.data.date.toLocaleDateString("en-GB", {
-          year: "numeric", month: "long", day: "numeric",
-        })}
-      </time>
-      {entry.data.description && <p class="lede">{entry.data.description}</p>}
-    </header>
-
+<PostLayout
+    title={entry.data.title}
+    date={entry.data.date}
+    description={entry.data.description}
+    tags={entry.data.tags}
+    backHref="/work"
+    backLabel="← All work"
+>
     <Content />
-  </article>
-</Layout>
-
+</PostLayout>

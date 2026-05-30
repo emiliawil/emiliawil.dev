@@ -1,39 +1,97 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import PostLayout from "../../layouts/PostLayout.astro";
+import { isPublished } from "../../lib/content";
+
 
 export async function getStaticPaths() {
-  const entries = await getCollection("reviews");
-  return entries.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+    const entries = await getCollection("reviews", isPublished);
+    return entries.map((entry) => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const { creator, medium, year, rating } = entry.data;
+
+const creatorRole: Record<string, string> = {
+  book: "By",
+  film: "Directed by",
+  tv: "Created by",
+  game: "Developed by",
+  podcast: "By",
+};
+
+const mediumLabel: Record<string, string> = {
+  book: "Book",
+  film: "Film",
+  tv: "TV",
+  game: "Game",
+  podcast: "Podcast",
+};
+
+const ratingPct = (rating / 5) * 100;
 ---
 
-<Layout title={entry.data.title}>
-  <article>
-    <header>
-      <h1>{entry.data.title}</h1>
-      {entry.data.tags && (
-        <p>Tags:</p>
-        <ul class="tags">
-          {entry.data.tags.map((tag) => (
-            <li>{tag}</li>
-          ))}
-        </ul>
+<PostLayout
+    title={entry.data.title}
+    date={entry.data.date}
+    description={entry.data.description}
+    tags={entry.data.tags}
+>
+    <Fragment slot="meta">
+      <span class="dot">·</span>
+      <span class="medium">{mediumLabel[medium]}</span>
+      {creator && (
+          <>
+              <span class="dot">·</span>
+              <span>{creatorRole[medium]} {creator}{year && ` (${year})`}</span>
+          </>
       )}
-      <time datetime={entry.data.date.toISOString()}>
-        {entry.data.date.toLocaleDateString("en-GB", {
-          year: "numeric", month: "long", day: "numeric",
-        })}
-      </time>
-      {entry.data.description && <p class="lede">{entry.data.description}</p>}
-    </header>
+      <span class="dot">·</span>
+      <span
+          class="rating"
+          style={`--rating-pct: ${ratingPct}%`}
+          aria-label={`Rated ${rating} out of 5`}
+          role="img"
+      >
+          <span class="stars-empty" aria-hidden="true">★★★★★</span>
+          <span class="stars-full" aria-hidden="true">★★★★★</span>
+      </span>
+      <span class="rating-num" aria-hidden="true">{rating}/5</span>
+    </Fragment>
 
     <Content />
-  </article>
-</Layout>
+</PostLayout>
+
+<style>
+    .rating {
+        position: relative;
+        display: inline-block;
+        letter-spacing: 0.05em;
+        line-height: 1;
+    }
+
+    .stars-empty {
+        color: var(--rule);
+    }
+
+    .stars-full {
+        position: absolute;
+        inset: 0;
+        color: var(--accent);
+        overflow: hidden;
+        width: var(--rating-pct);
+        white-space: nowrap;
+    }
+
+    .rating-num {
+        font-variant-numeric: tabular-nums;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-left: 0.1rem;
+    }
+</style>

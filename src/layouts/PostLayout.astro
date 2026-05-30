@@ -1,0 +1,153 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+    title: string;
+    date: Date;
+    description?: string;
+    tags?: string[];
+    backHref?: string;
+    backLabel?: string;
+}
+
+const {
+    title,
+    date,
+    description,
+    tags = [],
+    backHref = "/writing",
+    backLabel = "← All writing",
+} = Astro.props;
+---
+
+<Layout title={title}>
+    <article>
+        <a class="back" href={backHref}>{backLabel}</a>
+
+        <header>
+            <h1>{title}</h1>
+            <p class="meta">
+                <time datetime={date.toISOString()}>
+                    {date.toLocaleDateString("en-GB", {
+                        year: "numeric", month: "long", day: "numeric",
+                    })}
+                </time>
+                <slot name="meta" />
+            </p>
+            {description && <p class="lede">{description}</p>}
+        </header>
+
+        <div class="prose">
+            <slot />
+        </div>
+
+        {tags.length > 0 && (
+            <footer class="post-footer">
+                <ul class="tags">
+                    {tags.map((tag) => <li>#{tag}</li>)}
+                </ul>
+            </footer>
+        )}
+
+        <p class="back-bottom">
+            <a href={backHref}>{backLabel}</a>
+        </p>
+    </article>
+</Layout>
+
+<style>
+    article {
+        max-width: var(--measure);
+        margin-inline: auto;
+    }
+
+    .back,
+    .back-bottom a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-bottom: none;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        color: var(--muted);
+    }
+
+    .back:hover,
+    .back-bottom a:hover {
+        color: var(--accent);
+    }
+
+    header {
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.4rem 0.75rem;
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    .meta time {
+        color: var(--muted);
+    }
+
+    .meta :global(.dot) {
+        color: var(--rule);
+    }
+
+    .lede {
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        font-variation-settings: 'opsz' 24;
+        color: var(--muted);
+        margin: 0;
+    }
+
+    .prose :global(h2) {
+        margin-top: 2.5rem;
+    }
+
+    .prose :global(h3) {
+        margin-top: 1.75rem;
+    }
+
+    .prose :global(img) {
+        margin: 1.5rem 0;
+        border-radius: 2px;
+    }
+
+    .post-footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+    }
+
+    .tags {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tags li {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0;
+    }
+
+    .back-bottom {
+        margin-top: 2.5rem;
+    }
+</style>
