@@ -15,7 +15,7 @@ import { SOCIAL_LINKS } from "../data/constants";
 
 <style>
 	footer {
-		border-top: 2px solid var(--ink);
+        background-color: var(--yellow);
 	}
 
 	.container {
@@ -32,7 +32,7 @@ import { SOCIAL_LINKS } from "../data/constants";
 
 	.copy {
 		margin: 0;
-		color: var(--muted);
+		color: var(--text);
 		font-size: 0.9rem;
 	}
 
@@ -55,8 +55,8 @@ import { SOCIAL_LINKS } from "../data/constants";
 		padding-bottom: 2px;
 	}
 
-	li:nth-child(1) a:hover { color: var(--blue); border-bottom-color: var(--blue); }
-	li:nth-child(2) a:hover { color: var(--magenta); border-bottom-color: var(--magenta); }
-	li:nth-child(3) a:hover { color: var(--teal); border-bottom-color: var(--teal); }
-	li:nth-child(4) a:hover { color: var(--rust); border-bottom-color: var(--rust); }
+    a:hover {
+        color: var(--text);
+        border-bottom-color: var(--text);
+    }
 </style>

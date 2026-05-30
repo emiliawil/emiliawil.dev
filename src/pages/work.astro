@@ -204,7 +204,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .completed {
-        background-color: var(--green);
+        background-color: var(--magenta);
         color: #fff;
     }
 
@@ -275,6 +275,11 @@ import Layout from "../layouts/Layout.astro";
 
     .education li {
         margin-bottom: 1rem;
+        position: static;
+    }
+
+    .education li::before {
+        display: none;
     }
 
     .education .meta {

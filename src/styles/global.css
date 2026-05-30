@@ -8,13 +8,9 @@
 
   /* Palette — warm retro */
   --red: #e2483d;
-  --pink: #d95f93;
   --magenta: #c5398a;
   --yellow: #f2b13c;
-  --green: #4f9d5d;
   --blue: #3d86cf;
-  --teal: #54b3aa;
-  --rust: #c8593a;
   --ink: #241f1c;
 
   /* Roles */
@@ -48,7 +44,7 @@ body {
   background-color: var(--bg);
   /* faint dot grid */
   background-image: radial-gradient(
-    rgba(36, 31, 28, 0.05) 1.1px,
+    rgba(36, 31, 28, 0.1) 1.1px,
     transparent 1.1px
   );
   background-size: 22px 22px;
@@ -92,29 +88,6 @@ h2 {
   margin-top: 2.75rem;
 }
 
-/* coloured tick before section headings */
-h2::before {
-  content: "";
-  display: inline-block;
-  width: 0.7em;
-  height: 0.7em;
-  margin-right: 0.45rem;
-  background: var(--highlight);
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-  vertical-align: 0.02em;
-}
-
 h3 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -141,10 +114,41 @@ li::marker {
   color: var(--accent-2);
 }
 
+/* four-point star bullets for content lists */
+main ul {
+  list-style: none;
+  padding-left: 1.7rem;
+}
+
+main ul li {
+  position: relative;
+}
+
+main ul li::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0.8em;
+  width: 0.7em;
+  height: 0.7em;
+  transform: translateY(-45%);
+  background: var(--accent-2);
+  clip-path: polygon(
+    50% 0%,
+    62.5% 37.5%,
+    100% 50%,
+    62.5% 62.5%,
+    50% 100%,
+    37.5% 62.5%,
+    0% 50%,
+    37.5% 37.5%
+  );
+}
+
 a {
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   border-bottom: 2px solid var(--highlight);
   padding-bottom: 1px;
   transition:
@@ -170,8 +174,7 @@ hr {
 blockquote {
   position: relative;
   margin: 2rem 0;
-  padding: 2rem 1.5rem 1.25rem 2.5rem;
-  background: var(--bg-card);
+  padding: 1.5rem 1.5rem 0.5rem 2rem;
   border-left: 5px solid var(--pink);
   border-radius: 0 10px 10px 0;
   font-family: var(--font-serif);

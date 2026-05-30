@@ -145,6 +145,10 @@ const {
         gap: 0.5rem;
     }
 
+    .tags {
+        padding-left: 0;
+    }
+
     .tags li {
         font-size: 0.8rem;
         font-weight: 600;
@@ -153,12 +157,17 @@ const {
         padding: 0.18rem 0.6rem;
         border-radius: 999px;
         background: var(--blue);
+        position: static;
+    }
+
+    .tags li::before {
+        display: none;
     }
 
     .tags li:nth-child(5n + 2) { background: var(--magenta); }
-    .tags li:nth-child(5n + 3) { background: var(--green); }
-    .tags li:nth-child(5n + 4) { background: var(--rust); }
-    .tags li:nth-child(5n + 5) { background: var(--teal); }
+    .tags li:nth-child(5n + 3) { background: var(--yellow); }
+    .tags li:nth-child(5n + 4) { background: var(--blue); }
+    .tags li:nth-child(5n + 5) { background: var(--red); }
 
     .back-bottom {
         margin-top: 2.5rem;

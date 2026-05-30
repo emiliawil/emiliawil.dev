@@ -25,9 +25,6 @@ import Layout from "../layouts/Layout.astro";
         <p>
             I've found that my humanities background (English Degree, Law GDL and customer-facing experience) has been a huge asset in my software engineering career, giving me strong communication skills and a user-centric mindset that I bring to my work every day.
         </p>
-        <p>
-            For the professional side — skills, experience, projects — see my <a href="/work">work</a> page.
-        </p>
         <hr />
 </Layout>
 
@@ -36,21 +33,24 @@ import Layout from "../layouts/Layout.astro";
         float: right;
         width: 220px;
         margin: 0.5rem 0 1.5rem 2rem;
+        background: #fff;
+        border: 10px solid #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .profile-image {
         width: 100%;
         display: block;
         object-fit: cover;
-        border-radius: 2px;
     }
 
     figcaption {
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--text);
+        margin: 0.5rem 0;
         text-align: center;
-        font-style: italic;
     }
 
     

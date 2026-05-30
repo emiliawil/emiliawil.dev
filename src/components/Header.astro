@@ -65,7 +65,7 @@ import { NAV_LINKS } from "../data/constants";
 
 <style>
 	header {
-		border-bottom: 2px solid var(--ink);
+        border-top: 10px solid var(--yellow);
 		position: relative;
 	}
 
@@ -129,11 +129,9 @@ import { NAV_LINKS } from "../data/constants";
 	}
 
 	/* each nav link gets its own colour on hover */
-	nav li:nth-child(1) a:hover { color: var(--red); border-bottom-color: var(--red); }
-	nav li:nth-child(2) a:hover { color: var(--blue); border-bottom-color: var(--blue); }
-	nav li:nth-child(3) a:hover { color: var(--green); border-bottom-color: var(--green); }
-	nav li:nth-child(4) a:hover { color: var(--magenta); border-bottom-color: var(--magenta); }
-	nav li:nth-child(5) a:hover { color: var(--rust); border-bottom-color: var(--rust); }
+	nav li:nth-child(3n+1) a:hover { color: var(--red); border-bottom-color: var(--red); }
+	nav li:nth-child(3n+2) a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+	nav li:nth-child(3n) a:hover { color: var(--magenta); border-bottom-color: var(--magenta); }
 
 	.menu-toggle {
 		display: none;
