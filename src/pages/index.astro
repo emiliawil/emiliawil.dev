@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import WritingFeed from '../components/WritingFeed.astro';
+import profilePic from '../assets/profile-pic.png';
 ---
 
 <Layout title="Home">
@@ -9,7 +11,16 @@ import WritingFeed from '../components/WritingFeed.astro';
             <h1>Emilia Williamson</h1>
             <span class="job-title">Software Engineer</span>
             <div class="profile-wrap">
-                <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" />
+                <Image
+                    src={profilePic}
+                    alt="A profile photo of Emilia Williamson"
+                    class="profile-image"
+                    width={220}
+                    height={220}
+                    densities={[1.5, 2]}
+                    loading="eager"
+                    fetchpriority="high"
+                />
                 <!-- <svg class="burst" viewBox="-8 -8 116 116" aria-hidden="true">
                     <path d="M50 0 L61 31 L93 19 L72 46 L100 60 L66 62 L74 96 L50 72 L26 96 L34 62 L0 60 L28 46 L7 19 L39 31 Z" fill="var(--yellow)" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
                 </svg> -->
