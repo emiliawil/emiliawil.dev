@@ -139,13 +139,36 @@ const typeLabel = {
         line-height: 1.3;
     }
 
-    .type.blog { background: var(--red); }
+    .type.blog { background: var(--magenta); }
     .type.tutorials { background: var(--blue); }
-    .type.reviews { background: var(--magenta); }
+    .type.reviews { background: var(--red); }
 
     @media (max-width: 40rem) {
         .col-summary,
         .feed .summary {
+            display: none;
+        }
+
+        /* let title claim the freed space */
+        .feed {
+            table-layout: auto;
+        }
+
+        .col-type,
+        .col-date {
+            width: 1%;
+            white-space: nowrap;
+        }
+
+        .col-title,
+        .feed .title {
+            width: auto;
+        }
+    }
+
+    @media (max-width: 26rem) {
+        .col-date,
+        .feed .date {
             display: none;
         }
     }
