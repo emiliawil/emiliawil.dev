@@ -72,11 +72,15 @@ There's a tension at the heart of all of this. Evolution is "dumb" in a way that
 
 I came across a quote in Zygote Quarterly, a journal about biologically-inspired design, from a researcher working with mycelium (fungal networks, another area of intense biomimicry interest).
 
-> _"Biology is not a machine waiting to be tuned; it operates according to its own logic. Working with mycelium has repeatedly shown me that biology does not optimise for maximum performance, but for species survivability. When we attempt to extract only what serves us, we risk ignoring the system, since we reduce it to only what we need and the knowledge we have at that time. This means we probably miss key features of that system."_ — **Ilse (C.A.) Rovers, "From hype to hyphae", Zygote Quarterly, Issue 40** [^13]
+> "Biology is not a machine waiting to be tuned; it operates according to its own logic. Working with mycelium has repeatedly shown me that biology does not optimise for maximum performance, but for species survivability. When we attempt to extract only what serves us, we risk ignoring the system, since we reduce it to only what we need and the knowledge we have at that time. This means we probably miss key features of that system."
+>
+> <cite>Ilse (C.A.) Rovers, "From hype to hyphae", <em>Zygote Quarterly</em>, Issue 40 [^13]</cite>
 
 I think that's the right note to end on. The moth didn't evolve its wings to inspire our wallpaper. The kingfisher didn't shape its beak for the benefit of Japanese rail engineers. Nature's solutions are embedded in whole systems — predator-prey relationships, ecosystems, millions of years of context — and when we extract just the bit we need, we are, by definition, simplifying something that wasn't designed to be simple.
 
 That's not a reason not to do it. It's a reason to stay humble, keep looking, and never assume we've understood the whole picture. Evolution has had 3.8 billion years and it's still going. We're just getting started.
+
+---
 
 ## Further reading
 

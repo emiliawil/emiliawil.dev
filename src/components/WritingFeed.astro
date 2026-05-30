@@ -6,6 +6,13 @@ type Item =
   | { type: "tutorials"; entry: CollectionEntry<"tutorials"> }
   | { type: "reviews"; entry: CollectionEntry<"reviews"> };
 
+interface Props {
+  limit?: number;
+  compact?: boolean;
+}
+
+const { limit, compact = false } = Astro.props;
+
 const showDrafts = import.meta.env.DEV;
 
 const [blog, tutorials, reviews] = await Promise.all([
@@ -15,13 +22,15 @@ const [blog, tutorials, reviews] = await Promise.all([
 ]);
 
 
-const items: Item[] = [
+const allItems: Item[] = [
   ...blog.map((entry) => ({ type: "blog" as const, entry })),
   ...tutorials.map((entry) => ({ type: "tutorials" as const, entry })),
   ...reviews.map((entry) => ({ type: "reviews" as const, entry })),
 ].sort(
   (a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf()
 );
+
+const items = limit ? allItems.slice(0, limit) : allItems;
 
 const typeLabel = {
   blog: "Blog",
@@ -30,54 +39,115 @@ const typeLabel = {
 };
 ---
 
-{
-items.length > 0 &&
-(
-  <ul class="feed">
-    {items.map(({ type, entry }) => (
-      <li>
-        <span class:list={["type", type]}>{typeLabel[type]}</span>
-        <a href={`/${type}/${entry.id}`}><span class="title">{entry.data.title}</span></a>&ensp;
-          <time datetime={entry.data.date.toISOString()}>
-            {entry.data.date.toLocaleDateString("en-GB", {
-              year: "numeric", month: "short", day: "numeric",
-            })}
-          </time>
-      </li>
-    ))}
-  </ul>
-) 
-}
-
-{
-items.length === 0 &&
-(
+{items.length > 0 ? (
+  <table class:list={["index-table", "feed", { compact }]}>
+    {!compact && (
+      <thead>
+        <tr>
+          <th class="col-type">Type</th>
+          <th class="col-date">Date</th>
+          <th class="col-title">Title</th>
+          <th class="col-summary">Summary</th>
+        </tr>
+      </thead>
+    )}
+    <tbody>
+      {items.map(({ type, entry }) => (
+        <tr>
+          <td><span class:list={["type", type]}>{typeLabel[type]}</span></td>
+          <td class="date">
+            <time datetime={entry.data.date.toISOString()}>
+              {entry.data.date.toLocaleDateString("en-GB", {
+                year: "numeric", month: "short", day: "numeric",
+              })}
+            </time>
+          </td>
+          <td class="title">
+            <a href={`/${type}/${entry.id}`}>{entry.data.title}</a>
+          </td>
+          {!compact && <td class="summary">{entry.data.description}</td>}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+) : (
   <p>No writing yet! Please check back soon.</p>
-)
-}
+)}
 
 <style>
+    .feed {
+        table-layout: fixed;
+    }
+
+    .feed.compact {
+        table-layout: auto;
+    }
+
+    .feed.compact .date {
+        padding-right: 1.5rem;
+    }
+
+    .feed.compact .title {
+        width: 100%;
+    }
+
+    .feed tbody td {
+        padding-top: 0.45rem;
+        padding-bottom: 0.45rem;
+    }
+
+    .col-type { width: 6.5rem; }
+    .col-date { width: 7.5rem; }
+    .col-title { width: 30%; }
+
+    .feed .date {
+        white-space: nowrap;
+    }
+
+    .feed .date time {
+        font-family: var(--font-serif);
+        font-size: 0.92rem;
+    }
+
+    .feed .title a {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: 1.05rem;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 1px;
+    }
+
+    .feed .title a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+    }
+
+    .feed .summary {
+        color: var(--muted);
+        font-size: 0.8rem;
+    }
+
     .type {
         display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 500;
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        font-weight: 600;
         text-transform: uppercase;
-        margin-right: 0.4rem;
-        border: 1px solid var(--rule);
-        padding: 0.1rem 0.4rem;
-    }
-    .type.blog {
-        color: #7d2c2c;
-        border-color: #ab7171;
+        letter-spacing: 0.03em;
+        color: #fff;
+        padding: 0.16rem 0.5rem;
+        border-radius: 999px;
+        line-height: 1.3;
     }
 
-    .type.tutorials {
-        color: #2c7d74;
-        border-color: #71aba8;
-    }
+    .type.blog { background: var(--red); }
+    .type.tutorials { background: var(--blue); }
+    .type.reviews { background: var(--magenta); }
 
-    .type.reviews {
-        color: #742c7d;
-        border-color: #ab71ba;
+    @media (max-width: 40rem) {
+        .col-summary,
+        .feed .summary {
+            display: none;
+        }
     }
 </style>

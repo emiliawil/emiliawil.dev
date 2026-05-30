@@ -4,7 +4,7 @@ import { NAV_LINKS } from "../data/constants";
 
 <header>
 	<div class="container">
-		<a href="/" class="logo">emiliawil.dev</a>
+		<a href="/" class="logo" aria-label="emiliawil.dev">emiliawil<span class="dot" aria-hidden="true"></span>dev</a>
 
 		<button
 			class="menu-toggle"
@@ -65,7 +65,7 @@ import { NAV_LINKS } from "../data/constants";
 
 <style>
 	header {
-		border-bottom: 1px solid var(--rule);
+		border-bottom: 2px solid var(--ink);
 		position: relative;
 	}
 
@@ -81,16 +81,31 @@ import { NAV_LINKS } from "../data/constants";
 	}
 
 	.logo {
-		font-family: var(--font-serif);
-		font-weight: 600;
-		font-size: 1.1rem;
-		font-variation-settings: 'opsz' 24;
-		letter-spacing: -0.01em;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.2rem;
+		letter-spacing: -0.02em;
 		border-bottom: none;
+		color: var(--text);
+	}
+
+	.logo .dot {
+		display: inline-block;
+		width: 0.34em;
+		height: 0.34em;
+		margin: 0 0.07em;
+		border-radius: 50%;
+		background: var(--red);
+		vertical-align: -0.18em;
+		transition: background var(--transition);
 	}
 
 	.logo:hover {
-		color: var(--accent);
+		color: var(--text);
+	}
+
+	.logo:hover .dot {
+		background: var(--blue);
 	}
 
 	nav ul {
@@ -107,13 +122,18 @@ import { NAV_LINKS } from "../data/constants";
 
 	nav a {
 		font-size: 0.95rem;
-		font-weight: 500;
-		border-bottom: none;
+		font-weight: 600;
+		border-bottom: 2px solid transparent;
+		padding-bottom: 2px;
+		transition: color var(--transition), border-color var(--transition);
 	}
 
-	nav a:hover {
-		color: var(--accent);
-	}
+	/* each nav link gets its own colour on hover */
+	nav li:nth-child(1) a:hover { color: var(--red); border-bottom-color: var(--red); }
+	nav li:nth-child(2) a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+	nav li:nth-child(3) a:hover { color: var(--green); border-bottom-color: var(--green); }
+	nav li:nth-child(4) a:hover { color: var(--magenta); border-bottom-color: var(--magenta); }
+	nav li:nth-child(5) a:hover { color: var(--rust); border-bottom-color: var(--rust); }
 
 	.menu-toggle {
 		display: none;

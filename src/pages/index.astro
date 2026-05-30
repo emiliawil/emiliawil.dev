@@ -8,13 +8,18 @@ import WritingFeed from '../components/WritingFeed.astro';
         <div class="content">
             <h1>Emilia Williamson</h1>
             <span class="job-title">Software Engineer</span>
-            <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" />
+            <div class="profile-wrap">
+                <img src="/profile-pic.png" alt="A profile photo of Emilia Williamson" class="profile-image" />
+                <!-- <svg class="burst" viewBox="-8 -8 116 116" aria-hidden="true">
+                    <path d="M50 0 L61 31 L93 19 L72 46 L100 60 L66 62 L74 96 L50 72 L26 96 L34 62 L0 60 L28 46 L7 19 L39 31 Z" fill="var(--yellow)" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+                </svg> -->
+            </div>
             <p>Welcome! I'm Emilia, a full stack web developer based in the UK.</p>
             <p>This website is primarily a place for me to share my thoughts on tech topics, but I also want to use it as a space to share other things I'm interested in, like literature, philosophy and media criticism.</p>
             <p><strong>What next?</strong> See my <a href="/work">work</a>, find out what I'm up to <a href="/now">now</a>, or learn a bit more <a href="/about">about me</a>. You can also check out some of my <a href="/writing">writing</a>.</p>
 
             <h2>Recent posts</h2>
-            <WritingFeed limit={3} />
+            <WritingFeed limit={3} compact />
         </div>
     </div>
 </Layout>
@@ -31,33 +36,67 @@ import WritingFeed from '../components/WritingFeed.astro';
         flex: 1;
     }
     .job-title {
-        display: block;
+        font-size: 1.5rem;
         font-family: var(--font-serif);
-        font-size: 1.25rem;
-        font-variation-settings: 'opsz' 24;
-        color: var(--muted);
+        font-weight: 600;
+        font-variation-settings: "opsz" 24;
+        color: var(--accent);
+        margin-top: -0.5rem;
         margin-bottom: 1.5rem;
-        margin-top: -1.5rem;
+        display: inline-block;
+    }
+
+    .profile-wrap {
+        float: right;
+        position: relative;
+        width: 220px;
+        margin: 0 0 1.5rem 2rem;
     }
 
     .profile-image {
-        float: right;
         width: 220px;
         height: 220px;
         border-radius: 50%;
         object-fit: cover;
-        margin: -1.5rem 0 1.5rem 2rem;
+        display: block;
+        border: 2px solid var(--ink);
     }
 
+    .burst {
+        position: absolute;
+        top: 0px;
+        right: -10px;
+        width: 64px;
+        height: 64px;
+        transform: rotate(-8deg);
+    }
+
+    h1 {
+        margin-bottom: 0.25rem;
+    }
+
+    /* h1::after {
+        content: "";
+        display: inline-block;
+        width: 0.5em;
+        height: 0.5em;
+        margin-left: 0.3rem;
+        background: var(--highlight);
+        clip-path: polygon(
+            50% 0%, 61% 35%, 98% 35%, 68% 57%,
+            79% 91%, 50% 70%, 21% 91%, 32% 57%,
+            2% 35%, 39% 35%
+        );
+    } */
     h2 {
         clear: right;
     }
 
     @media (max-width: 36rem) {
-        .profile-image {
+        .profile-wrap {
             float: none;
             margin: 1rem auto;
-            max-width: 360px;
+            width: 220px;
         }
     }
 
