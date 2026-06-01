@@ -1,6 +1,6 @@
 :root {
   /* Surfaces */
-  --bg: #f6ecd9;
+  --bg: #f9f1e3;
   --bg-card: #fdf8ee;
   --text: #241f1c;
   --muted: #756b5e;
@@ -44,7 +44,7 @@ body {
   background-color: var(--bg);
   /* faint dot grid */
   background-image: radial-gradient(
-    rgba(36, 31, 28, 0.1) 1.1px,
+    rgba(36, 31, 28, 0.08) 1.1px,
     transparent 1.1px
   );
   background-size: 22px 22px;
