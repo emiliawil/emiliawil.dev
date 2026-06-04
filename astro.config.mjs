@@ -2,11 +2,12 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
+  site: "https://emiliawil.dev",
   markdown: {
     remarkRehype: {
       footnoteLabel: "Sources",
       footnoteLabelTagName: "h2",
-      footnoteLabelProperties: {}, // drop default 'sr-only' class to make heading visible
+      footnoteLabelProperties: {},
       footnoteBackLabel: "Back to text",
     },
   },
