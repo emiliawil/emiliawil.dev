@@ -13,5 +13,6 @@ export const SOCIAL_LINKS = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/emiliawil/" },
   { name: "Bluesky", href: "https://bsky.app/profile/emiliawil.dev" },
   { name: "Email", href: "mailto:emiliawilliamson@pm.me" },
+  { name: "Webrings", href: "/webrings" },
   { name: "RSS", href: "/rss.xml" },
 ];
