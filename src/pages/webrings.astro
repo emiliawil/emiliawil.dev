@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
   src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs"
   type="module"
 ></script>
+<script src="https://soc-webring.netlify.app/webring.js" crossorigin></script>
 
 <Layout>
   <h1>Webrings</h1>
@@ -13,6 +14,11 @@ import Layout from "../layouts/Layout.astro";
     Webrings I am part of - go forth, and find other cool websites!
     <a href="https://tedium.co/2020/11/20/webring-history/" target="_blank">(What's a webring?)</a>
   </p>
+
+  <section class="webrings-list">
+
+  <soc-webring-widget src="https://soc-webring.netlify.app/members.json" variant="vertical"></soc-webring-widget>
+  
 
   <!-- THE CLAW -->
   <the-claw-webring-widget>
@@ -35,4 +41,15 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </div>
 </the-claw-webring-widget>
+
+</section>
 </Layout>
+
+<style>
+  .webrings-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+</style>
